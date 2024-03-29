@@ -26,9 +26,9 @@ RUN mvn clean package \
 EXPOSE 8080 9876
 
 ENV JAVA_OPTS -XX:MaxRAMPercentage=85 -Djava.awt.headless=true -XX:+HeapDumpOnOutOfMemoryError \
- -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -Xlog:gc:file=/home/spring/logs/gc.log \
+ -XX:MaxGCPauseMillis=200 -XX:InitiatingHeapOccupancyPercent=35 -Xlog:gc:file=/home/spring/logs/gc.log \
  -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9876 -Dcom.sun.management.jmxremote.ssl=false \
  -Dcom.sun.management.jmxremote.authenticate=false -Dlogging.file.path=/home/spring/logs \
- -Dserver.port=8080 -Duser.timezone=Asia/Shanghai -Xmx256m -Xms128m
+ -Dserver.port=8080 -Duser.timezone=Asia/Shanghai -Xmx128m -Xms128m
 
 ENTRYPOINT ["bash","-c","java $JAVA_OPTS -jar app.jar"]
